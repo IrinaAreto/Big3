@@ -1,0 +1,57 @@
+.signinPage {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.signinSide {
+    background-color: var(--base-white);
+    width: 42%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signinWords {
+    font-family: Avenir-Book, sans-serif;
+    font-size: 36px;
+    line-height: 50px;
+    color: var(--base-blue);
+    margin-bottom: 30px;
+}
+
+.moveToSignUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.moveToSignUp > p {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--base-grey);
+    margin: 24px 0;
+}
+
+.moveToSignUpLink {
+    color: var(--base-red);
+    text-decoration: underline;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pictureSide {
+    width: 58%;
+    background-color: #F5FBFF;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.picture {
+    width: 605px;
+    height: 412px;
+}

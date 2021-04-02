@@ -1,0 +1,58 @@
+.input {
+    height: 89px;
+    position: relative;
+}
+
+.inputName {
+    height: 26px;
+    display: flex;
+    align-items: center;
+}
+
+.inputName > div {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 14px;
+    color: var(--base-grey);
+    height: 18px;
+}
+
+.inputLine {
+    background: var(--base-lightest-grey1);
+    border-radius: 4px;
+    border: 0;
+    width: 352px;
+    height: 38px;
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--base-dark-grey);
+    outline: none;
+    padding-left: 12px;
+}
+
+.inputLine:hover {
+    background: var(--base-lightest-grey);
+}
+
+.inputLine:focus {
+    background: var(--base-lightest-grey1);
+    box-shadow: 0 0 5px #D9D9D9;
+}
+
+.inputLine:disabled {
+    background: var(--base-lightest-grey1);
+    color: var(--base-lightest-grey);
+}
+
+.inputLine:invalid {
+    background: var(--base-lightest-grey1);
+    border: 1px solid var(--base-lightest-red);
+    box-sizing: border-box;
+}
+
+.displayEye {
+    position: absolute;
+    height: 16px;
+    right: 12px;
+    top: 39px;
+}

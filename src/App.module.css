@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+:root {
+  --base-white: #FFFFFF;
+  --base-dark-grey: #303030;
+  --base-grey: #707070;
+  --base-light-grey: #9C9C9C;
+  --base-lightest-grey: #D1D1D1;
+  --base-lightest-grey1: #F6F6F6;
+  --base-dark-red: #C60E2E;
+  --base-red: #E4163A;
+  --base-light-red: #FF5761;
+  --base-lightest-red: #FF768E;
+  --base-blue: #344472;
+}

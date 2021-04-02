@@ -1,0 +1,121 @@
+.button {
+    width: 365px;
+    height: 40px;
+    background: var(--base-red);
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+}
+
+.button > p {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--base-white);
+    margin: 0;
+}
+
+.button>p:last-child {
+    display: none;
+}
+
+.button:hover {
+    background: var(--base-light-red);
+}
+
+.button:active {
+    background: var(--base-dark-red);
+}
+
+.button:disabled {
+    background: var(--base-lightest-grey1);
+}
+
+.button>p:disabled {
+    color: var(--base-lightest-grey);
+}
+
+.add {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px;
+    width: 104px;
+    height: 40px;
+    background: var(--base-red);
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+}
+
+.add > p {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--base-white);
+    margin: 0;
+}
+
+.add>p:first-child {
+    margin-right: 12px;
+}
+
+.add:hover {
+    background: var(--base-light-red);
+}
+
+.add:active {
+    background: var(--base-dark-red);
+}
+
+.add:disabled {
+    background: var(--base-lightest-grey1);
+}
+
+.add>p:disabled {
+    color: var(--base-lightest-grey);
+}
+
+.secondaryButton {
+    padding: 8px 24px;
+    width: 171px;
+    height: 40px;
+    background: var(--base-white);
+    border-radius: 4px;
+    border: 1px solid var(--base-light-grey);
+    box-sizing: border-box;
+    outline: none;
+}
+
+.secondaryButton > p {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--base-light-grey);
+    margin: 0 8px;
+}
+
+.secondaryButton>p:last-child {
+    display: none;
+}
+
+.secondaryButton:hover {
+    background: var(--base-lightest-grey);
+}
+
+.secondaryButton:active {
+    background: var(--base-light-grey);
+}
+
+.secondaryButton>p:active {
+    color: var(--base-grey);
+}
+
+.secondaryButton:disabled {
+    background: var(--base-lightest-grey1);
+}
+
+.secondaryButton>p:disabled {
+    color: var(--base-lightest-grey);
+}

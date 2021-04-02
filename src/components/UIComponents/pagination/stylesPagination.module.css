@@ -1,0 +1,43 @@
+.pageContainer {
+    display: flex;
+    flex-direction: row;
+    color: var(--base-grey);
+    user-select: none;
+    margin: 8px 0 32px 0;
+}
+
+.pageContainer > li {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+.pageLink {
+    outline: none;
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.prevNext {
+    outline: none;
+    padding-bottom: 6px;
+    cursor: pointer;
+}
+
+.activePage {
+    width: 40px;
+    height: 40px;
+    background-color: var(--base-red);
+    border-radius: 4px;
+    color: var(--base-white);
+}
+
+.disabled {
+    cursor: default;
+}

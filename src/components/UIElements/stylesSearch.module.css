@@ -1,0 +1,25 @@
+.search {
+    position: relative;
+}
+
+.searchInput {
+    width: 364px;
+    height: 40px;
+    background: var(--base-white);
+    border: 0.5px solid var(--base-lightest-grey);
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--base-grey);
+    padding-left: 12px;
+}
+
+.searchIcon {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+}

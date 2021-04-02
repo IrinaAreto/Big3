@@ -1,0 +1,87 @@
+.layoutForAuth {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.sidebar {
+    width: 140px;
+    height: calc(100vh - 80px);
+    background: var(--base-white);
+    box-shadow: 0 1px 10px rgba(209, 209, 209, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 80px;
+}
+
+.sidebarMenu {
+    margin-top: 32px;
+    list-style: none;
+    padding: 0;
+}
+
+.menuIcon {
+    margin: 32px 0 4px 0;
+    width: 24px;
+    height: 24px;
+}
+
+.menuItem {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    margin: 0 0 4px 0;
+    color: var(--base-light-grey);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activeLink {
+    color: var(--base-red);
+}
+
+.activeLink > * path {
+    fill: var(--base-red);
+}
+
+.signout {
+    margin: 0 0 32px 0;
+    width: 46px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.signoutIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.signoutIcon path {
+    fill: var(--base-lightest-red);
+}
+
+.signOutName {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    width: 46px;
+    color: var(--base-lightest-red);
+    margin: 4px 0;
+}
+
+.mainPart {
+    position: absolute;
+    left: 140px;
+    padding: 112px 80px 0 80px;
+}
+
+.notAuthMainPart {
+    width: 100%;
+}

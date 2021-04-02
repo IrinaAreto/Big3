@@ -1,0 +1,39 @@
+.header {
+    width: 100vw;
+    height: 80px;
+    background: var(--base-white);
+    box-shadow: 0 1px 10px rgba(209, 209, 209, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.headerLogo {
+    width: 191px;
+    height: 48px;
+    margin-left: 51px;
+    margin-top: 16px;
+}
+
+.userData {
+    display: flex;
+    flex-direction: row;
+}
+
+.userData > p {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--base-dark-grey);
+    margin-top: 30px;
+}
+
+.profilePicture {
+    height: 36px;
+    width: 36px;
+    margin: 22px 51px 22px 16px;
+}

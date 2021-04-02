@@ -1,0 +1,50 @@
+.selectBlock {
+    margin: 8px 0 32px 0;
+}
+
+.select {
+    border: 0.5px solid var(--base-lightest-grey);
+    border-radius: 4px;
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    color: var(--base-light-grey);
+}
+
+[class$="-control"] {
+    height: 40px;
+    width: 88px;
+    border-color: var(--base-lightest-grey) !important;
+    box-shadow: none !important;
+    caret-color: white;
+    background-color: var(--base-white) !important;
+}
+
+[class$="-menu"] {
+    background-color: var(--base-white) !important;
+}
+
+[class$="-option"]:first-child {
+    padding-left: 22px !important;
+}
+
+[class$="-option"]:not(:first-child) {
+    padding-left: 20px !important;
+}
+
+[class$="-option"]:not(:last-child) {
+    border-bottom: 0.5px solid var(--base-lightest-grey);
+}
+
+[class$="-option"]:hover {
+    background-color: var(--base-lightest-red) !important;
+    color: var(--base-white);
+}
+
+[class$="-option"]:active {
+    background-color: var(--base-dark-red) !important;
+}
+
+[class$="-singleValue"] {
+    margin-left: 10px !important;
+}
