@@ -36,7 +36,7 @@ export function Sidebar(): React.ReactElement {
                             className={styles.signoutIcon}/><p
                             className={styles.signOutName}>Sign out</p></div>
                     </div>
-                </> : <Redirect to="/auth"/>}
+                </> : <Redirect to="/"/>}
             <main className={token ? styles.mainPart : styles.notAuthMainPart}>
                 <RouterSwitch isAuthorized={!!token}/>
             </main>

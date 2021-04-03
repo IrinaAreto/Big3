@@ -12,10 +12,10 @@ type RouterSwitchProps = {
 export function RouterSwitch({isAuthorized}: RouterSwitchProps): React.ReactElement {
     return (
         <Switch>
-            <Route exact path="/auth" component={LoginPage}/>
+            <Route exact path="/" component={LoginPage}/>
             <Route exact path="/signup" component={SingUpPage}/>
-            <Route exact path="/teams">{isAuthorized ? <CardsTeams/> : <Redirect to="/auth"/>}</Route>
-            <Route exact path="/players">{isAuthorized ? <CardsPlayer/> : <Redirect to="/auth"/>}</Route>
+            <Route exact path="/teams">{isAuthorized ? <CardsTeams/> : <Redirect to="/"/>}</Route>
+            <Route exact path="/players">{isAuthorized ? <CardsPlayer/> : <Redirect to="/"/>}</Route>
         </Switch>
     )
 }

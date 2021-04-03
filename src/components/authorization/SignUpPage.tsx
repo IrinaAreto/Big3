@@ -75,7 +75,7 @@ export function SingUpPage(): React.ReactElement {
                                   ref={register}/>
                         <Button buttonName="Sign In" buttonType="signin"/>
                         <div className={styles.moveToSignUp}>
-                            <p>Already a member? <NavLink to={"/auth"} className={styles.moveToSignUpLink}>Sign
+                            <p>Already a member? <NavLink to="/" className={styles.moveToSignUpLink}>Sign
                                 in</NavLink>
                             </p>
                         </div>
