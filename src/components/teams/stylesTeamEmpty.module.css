@@ -1,0 +1,38 @@
+.teamEmpty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 556px;
+    height: 570px;
+    background-color: var(--base-white);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.teamsEmptyPic {
+    width: 482px;
+    height: 320px;
+}
+
+.textEmpty {
+    font-family: Avenir-Black, sans-serif;
+    font-size: 36px;
+    line-height: 49px;
+    text-align: center;
+    color: var(--base-lightest-red);
+    margin: 48px 0 24px 0;
+}
+
+.textAddNew {
+    font-family: Avenir-Book, sans-serif;
+    font-size: 24px;
+    line-height: 33px;
+    color: var(--base-grey);
+    margin: 0;
+}

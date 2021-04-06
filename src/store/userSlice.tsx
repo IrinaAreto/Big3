@@ -5,7 +5,7 @@ import {InputsLogin} from "../components/authorization/LoginPage";
 
 interface ISignIn {
     username: string,
-    avatarUrl: string,
+    avatarUrl: string | null,
     token: string,
     isFetching: boolean,
     isSuccess: boolean,
@@ -14,16 +14,14 @@ interface ISignIn {
 }
 
 const initialState: ISignIn = {
-    username: "",
-    avatarUrl: "",
-    token: localStorage.getItem("token") ?? "",
+    username: localStorage.getItem('username') ?? "",
+    avatarUrl: localStorage.getItem('avatarUrl') ?? null,
+    token: localStorage.getItem('token') ?? "",
     isFetching: false,
     isSuccess: false,
     isError: false,
     errorMessage: ''
 }
-
-export const userSelector = (state: RootState) => state.user;
 
 export const signupUser = createAsyncThunk(
     'users/signupUser',
@@ -44,6 +42,10 @@ export const signupUser = createAsyncThunk(
 
             if (response.status === 200) {
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('username', data.name);
+                if (data.avatarUrl !== "null") {
+                    localStorage.setItem('avatarUrl', data.avatarUrl);
+                }
                 return {...data};
             } else {
                 console.log('data', data);
@@ -75,6 +77,10 @@ export const loginUser = createAsyncThunk(
             console.log('response', data);
             if (response.status === 200) {
                 localStorage.setItem('token', data.token);
+                localStorage.setItem('username', data.name);
+                if (data.avatarUrl !== "null") {
+                    localStorage.setItem('avatarUrl', data.avatarUrl);
+                }
                 return data;
             } else {
                 return thunkAPI.rejectWithValue(data);
@@ -110,10 +116,10 @@ export const userSlice = createSlice({
             state.username = payload.name;
             state.token = payload.token;
         })
-        builder.addCase(signupUser.pending, (state) => {
+        builder.addCase((signupUser.pending || loginUser.pending), (state) => {
             state.isFetching = true;
         })
-        builder.addCase(signupUser.rejected, (state, action) => {
+        builder.addCase((signupUser.rejected || loginUser.rejected), (state, action) => {
             state.isFetching = false;
             state.isError = true;
             state.errorMessage = action.error.message;
@@ -126,15 +132,16 @@ export const userSlice = createSlice({
             state.username = payload.name;
             state.token = payload.token;
         })
-        builder.addCase(loginUser.pending, (state) => {
-            state.isFetching = true;
-        })
-        builder.addCase(loginUser.rejected, (state, action) => {
-            state.isFetching = false;
-            state.isError = true;
-            state.errorMessage = action.error.message;
-        })
+        /*        builder.addCase(loginUser.pending, (state) => {
+                    state.isFetching = true;
+                })*/
+        /*        builder.addCase(loginUser.rejected, (state, action) => {
+                    state.isFetching = false;
+                    state.isError = true;
+                    state.errorMessage = action.error.message;
+                })*/
     }
 })
 
+export const userSelector = (state: RootState) => state.user;
 export const {clearState, signOut} = userSlice.actions;

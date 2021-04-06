@@ -1,12 +1,12 @@
 import * as React from "react";
 import {useEffect} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink, Redirect, useRouteMatch} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../store/Hooks";
-import {clearState, userSelector} from "../../store/Slice";
+import {clearState, userSelector} from "../../store/userSlice";
 import {Input} from "../UIElements/Input";
 import {Button} from "../UIElements/Button";
-import {loginUser} from "../../store/Slice";
+import {loginUser} from "../../store/userSlice";
 import {ReactComponent as Group} from "../svgs/Group.svg";
 import styles from "./styles.module.css";
 
@@ -19,6 +19,7 @@ export function LoginPage(): React.ReactElement {
     const {register, handleSubmit} = useForm<InputsLogin>();
     const dispatch = useAppDispatch();
     const {token, isSuccess, isError, errorMessage} = useAppSelector(userSelector);
+    let {url} = useRouteMatch();
 
     const onSubmit: SubmitHandler<InputsLogin> = async data => {
         await dispatch(loginUser(data))
@@ -42,7 +43,7 @@ export function LoginPage(): React.ReactElement {
     }, [isSuccess, isError]);
 
     return (
-        !!token ? <Redirect to="/teams"/> :
+        !!token ? <Redirect to="main/teams"/> :
         <div className={styles.signinPage}>
             <div className={styles.signinSide}>
                 <form onSubmit={handleSubmit(onSubmit)}>

@@ -2,8 +2,8 @@ import * as React from "react";
 import {Switch, Route, Redirect} from "react-router-dom";
 import {LoginPage} from "../authorization/LoginPage";
 import {SingUpPage} from "../authorization/SignUpPage";
-import {CardsTeams} from "../teams/CardTeams";
-import {CardsPlayer} from "../players/CardPlayers";
+import {Main} from "../main/Main";
+import {NotFound} from "../notFound/NotFound";
 
 type RouterSwitchProps = {
     isAuthorized: boolean;
@@ -14,8 +14,9 @@ export function RouterSwitch({isAuthorized}: RouterSwitchProps): React.ReactElem
         <Switch>
             <Route exact path="/" component={LoginPage}/>
             <Route exact path="/signup" component={SingUpPage}/>
-            <Route exact path="/teams">{isAuthorized ? <CardsTeams/> : <Redirect to="/"/>}</Route>
-            <Route exact path="/players">{isAuthorized ? <CardsPlayer/> : <Redirect to="/"/>}</Route>
+            <Route path="/main">{isAuthorized ? <Main/> : <Redirect to="/"/>}</Route>
+            <Route path="/notfound" component={NotFound}/>
+            <Redirect to="/notfound"/>
         </Switch>
     )
 }

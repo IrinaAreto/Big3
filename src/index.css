@@ -24,6 +24,13 @@ code {
   font-weight: 500;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Avenir-Black';
+  src: local('Avenir-Black'), url('../src/fonts/Avenir-Black.otf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
 
 
 @font-face {

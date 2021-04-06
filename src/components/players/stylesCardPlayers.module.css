@@ -5,4 +5,18 @@
     margin-bottom: 32px;
 }
 
+.cardsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 24px;
+}
 
+.cardsContainer > div {
+    margin-bottom: 24px;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

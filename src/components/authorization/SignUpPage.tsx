@@ -7,7 +7,7 @@ import {Button} from "../UIElements/Button";
 import {Checkbox} from "../UIElements/Checkbox";
 import {ReactComponent as SignUpPic} from "../svgs/signup.svg";
 import {useAppSelector, useAppDispatch} from "../../store/Hooks";
-import {userSelector, signupUser, clearState} from "../../store/Slice";
+import {userSelector, signupUser, clearState} from "../../store/userSlice";
 import styles from "./styles.module.css";
 
 type InputsSignUp = {
@@ -61,7 +61,7 @@ export function SingUpPage(): React.ReactElement {
     }, [isSuccess, isError]);
 
     return (
-        !!token ? <Redirect to="/teams"/> :
+        !!token ? <Redirect to="main/teams"/> :
             <div className={styles.signinPage}>
                 <div className={styles.signinSide}>
                     <form onSubmit={handleSubmit(onSubmit)}>
