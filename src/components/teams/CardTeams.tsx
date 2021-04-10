@@ -2,7 +2,7 @@ import * as React from "react";
 import {useState, useEffect} from "react";
 import {Pagination} from "../UIComponents/pagination/Pagination";
 import {Search} from "../UIElements/Search";
-import {Button} from "../UIElements/Button";
+import {ButtonAdd} from "../UIElements/ButtonAdd";
 import {SmallCard} from "../UIComponents/smallCard/SmallCard";
 import {NumberOfItemsOnPage} from "../UIComponents/pagination/NumberOfItemsOnPage";
 import {TeamsEmpty} from "./TeamsEmpty";
@@ -38,7 +38,7 @@ export function CardsTeams(): React.ReactElement {
         <>
             <div className={styles.searchAdd}>
                 <Search/>
-                <Button buttonName="Add" buttonType="add"/>
+                <ButtonAdd buttonName="Add" linkTo='/main/teams/addTeam'/>
             </div>
             {teams.count > 0 ?
                 <div className={styles.cardsContainer}>

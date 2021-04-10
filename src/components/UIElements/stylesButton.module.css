@@ -1,6 +1,4 @@
 .button {
-    width: 365px;
-    height: 40px;
     background: var(--base-red);
     border-radius: 4px;
     border: 0;
@@ -15,10 +13,6 @@
     margin: 0;
 }
 
-.button>p:last-child {
-    display: none;
-}
-
 .button:hover {
     background: var(--base-light-red);
 }
@@ -31,8 +25,18 @@
     background: var(--base-lightest-grey1);
 }
 
-.button>p:disabled {
+.button > p:disabled {
     color: var(--base-lightest-grey);
+}
+
+.shortButton {
+    width: 171px;
+    height: 40px;
+}
+
+.longButton {
+    width: 365px;
+    height: 40px;
 }
 
 .add {
@@ -57,7 +61,7 @@
     margin: 0;
 }
 
-.add>p:first-child {
+.add > p:first-child {
     margin-right: 12px;
 }
 
@@ -73,8 +77,12 @@
     background: var(--base-lightest-grey1);
 }
 
-.add>p:disabled {
+.add > p:disabled {
     color: var(--base-lightest-grey);
+}
+
+.addLink {
+    text-decoration: none;
 }
 
 .secondaryButton {
@@ -96,10 +104,6 @@
     margin: 0 8px;
 }
 
-.secondaryButton>p:last-child {
-    display: none;
-}
-
 .secondaryButton:hover {
     background: var(--base-lightest-grey);
 }
@@ -108,7 +112,7 @@
     background: var(--base-light-grey);
 }
 
-.secondaryButton>p:active {
+.secondaryButton > p:active {
     color: var(--base-grey);
 }
 
@@ -116,6 +120,6 @@
     background: var(--base-lightest-grey1);
 }
 
-.secondaryButton>p:disabled {
+.secondaryButton > p:disabled {
     color: var(--base-lightest-grey);
 }

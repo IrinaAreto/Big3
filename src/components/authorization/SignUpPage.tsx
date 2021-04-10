@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
 import {NavLink, Redirect} from "react-router-dom";
 import {Input} from "../UIElements/Input";
-import {Button} from "../UIElements/Button";
+import {ButtonSubmit} from "../UIElements/ButtonSubmit";
 import {Checkbox} from "../UIElements/Checkbox";
 import {ReactComponent as SignUpPic} from "../svgs/signup.svg";
 import {useAppSelector, useAppDispatch} from "../../store/Hooks";
@@ -66,14 +66,14 @@ export function SingUpPage(): React.ReactElement {
                 <div className={styles.signinSide}>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className={styles.signinWords}>Sign Up</div>
-                        <Input name="userName" ref={register} inputLineName="Name" inputType="login"/>
-                        <Input name="login" ref={register} inputLineName="Login" inputType="login"/>
+                        <Input name="userName" ref={register} inputLineName="Name" inputType="inputTxt"/>
+                        <Input name="login" ref={register} inputLineName="Login" inputType="inputTxt"/>
                         <Input name="password" ref={register} inputLineName="Password" inputType="pswd"/>
                         <Input name="passwordRepeat" ref={register} inputLineName="Enter your password again"
                                inputType="pswd"/>
                         <Checkbox name="acceptAgreement" checkboxText="I accept the agreement" id="acceptAgr"
                                   ref={register}/>
-                        <Button buttonName="Sign In" buttonType="signin"/>
+                        <ButtonSubmit buttonName="Sign In" buttonSize="long"/>
                         <div className={styles.moveToSignUp}>
                             <p>Already a member? <NavLink to="/" className={styles.moveToSignUpLink}>Sign
                                 in</NavLink>

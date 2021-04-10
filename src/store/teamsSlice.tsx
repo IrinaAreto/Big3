@@ -1,31 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import type {RootState} from "./Store";
-
-type PagesFetch = {
-    page: number;
-    pageSize: number;
-    token: string | null;
-}
-
-interface ITeamCard {
-    name: string,
-    foundationYear: number,
-    division: string,
-    conference: string,
-    imageUrl: string,
-    id: number
-}
-
-interface ITeams {
-    data: ITeamCard[],
-    count: number,
-    page: number,
-    size: number,
-    isFetching: boolean,
-    isSuccess: boolean,
-    isError: boolean,
-    errorMessage: string | undefined
-}
+import {PagesFetch, ITeams} from "./types";
 
 const initialState: ITeams = {
     data: [],
@@ -77,7 +52,7 @@ export const teamsSlice = createSlice({
             return state;
         },
     },
-    extraReducers:builder => {
+    extraReducers: builder => {
         builder.addCase(fetchTeamsCards.fulfilled, (state, {payload}) => {
             state.isFetching = false;
             state.isSuccess = true;

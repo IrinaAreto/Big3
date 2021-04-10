@@ -1,17 +1,8 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import type {RootState} from "./Store";
+import {ISignIn} from "./types";
 import {signUpType} from "../components/authorization/SignUpPage";
 import {InputsLogin} from "../components/authorization/LoginPage";
-
-interface ISignIn {
-    username: string,
-    avatarUrl: string | null,
-    token: string,
-    isFetching: boolean,
-    isSuccess: boolean,
-    isError: boolean,
-    errorMessage: string | undefined
-}
 
 const initialState: ISignIn = {
     username: localStorage.getItem('username') ?? "",

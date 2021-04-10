@@ -1,11 +1,11 @@
 import * as React from "react";
 import {useEffect} from "react";
 import {useForm, SubmitHandler} from "react-hook-form";
-import {NavLink, Redirect, useRouteMatch} from "react-router-dom";
+import {NavLink, Redirect} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../store/Hooks";
 import {clearState, userSelector} from "../../store/userSlice";
 import {Input} from "../UIElements/Input";
-import {Button} from "../UIElements/Button";
+import {ButtonSubmit} from "../UIElements/ButtonSubmit";
 import {loginUser} from "../../store/userSlice";
 import {ReactComponent as Group} from "../svgs/Group.svg";
 import styles from "./styles.module.css";
@@ -19,7 +19,6 @@ export function LoginPage(): React.ReactElement {
     const {register, handleSubmit} = useForm<InputsLogin>();
     const dispatch = useAppDispatch();
     const {token, isSuccess, isError, errorMessage} = useAppSelector(userSelector);
-    let {url} = useRouteMatch();
 
     const onSubmit: SubmitHandler<InputsLogin> = async data => {
         await dispatch(loginUser(data))
@@ -48,9 +47,9 @@ export function LoginPage(): React.ReactElement {
             <div className={styles.signinSide}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.signinWords}>Sign In</div>
-                    <Input name="login" ref={register} inputLineName="Login" inputType="login"/>
+                    <Input name="login" ref={register} inputLineName="Login" inputType="inputTxt"/>
                     <Input name="password" ref={register} inputLineName="Password" inputType="pswd"/>
-                    <Button buttonName="Sign In" buttonType="signin"/>
+                    <ButtonSubmit buttonName="Sign In" buttonSize="long"/>
                     <div className={styles.moveToSignUp}>
                         <p>Not a member yet? <NavLink to="/signup" className={styles.moveToSignUpLink}>Sign up</NavLink>
                         </p>

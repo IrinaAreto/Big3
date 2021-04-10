@@ -1,7 +1,7 @@
 import * as React from "react";
 import {useState} from "react";
 import {Search} from "../UIElements/Search";
-import {Button} from "../UIElements/Button";
+import {ButtonAdd} from "../UIElements/ButtonAdd";
 import {SmallCard} from "../UIComponents/smallCard/SmallCard";
 import styles from "./stylesCardPlayers.module.css";
 import {teamCardsArray} from "../teamCardsArray";
@@ -30,7 +30,7 @@ export function CardsPlayer(): React.ReactElement {
         <>
             <div className={styles.searchAdd}>
                 <div><Search/><div></div></div>
-                <Button buttonName="Add" buttonType="add"/>
+                <ButtonAdd buttonName="Add" linkTo='/main/players/addPlayer'/>
             </div>
             <div className={styles.cardsContainer}>
                 {currentPageData}

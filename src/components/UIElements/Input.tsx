@@ -11,13 +11,13 @@ interface InputProps {
 }
 
 export const Input = React.forwardRef(({name, inputLineName, inputType}: InputProps, ref:any): React.ReactElement => {
-    let [showingPassword, setShowingPassword] = useState(false);
+    let [showingPassword, setShowingPassword] = useState<boolean>(false);
     const showPassword = () => {
         setShowingPassword(!showingPassword);
     }
 
     const setInputType = () => {
-        if (inputType === "login") return "text";
+        if (inputType === "inputTxt") return "text";
         else if (inputType === "pswd") return showingPassword ? "text" : "password";
     }
 
