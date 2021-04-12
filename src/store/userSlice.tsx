@@ -15,7 +15,7 @@ const initialState: ISignIn = {
 }
 
 export const signupUser = createAsyncThunk(
-    'users/signupUser',
+    'user/signupUser',
     async (signUpData: signUpType, thunkAPI) => {
         try {
             const response = await fetch(
@@ -50,7 +50,7 @@ export const signupUser = createAsyncThunk(
 )
 
 export const loginUser = createAsyncThunk(
-    'users/login',
+    'user/login',
     async (loginData: InputsLogin, thunkAPI) => {
         try {
             const response = await fetch(

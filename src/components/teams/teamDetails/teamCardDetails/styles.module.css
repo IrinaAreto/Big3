@@ -1,0 +1,100 @@
+.cardContainer {
+    width: 1140px;
+    height: 473px;
+}
+
+.upperPart {
+    height: 69px;
+    background: var(--base-white);
+    border: 0.5px solid #9C9C9C;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.namePath {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--base-red);
+    margin: 24px 32px;
+}
+
+.addDelete {
+    margin: 24px 32px 0 0;
+}
+
+.iconPencil {
+    width: 24px;
+    height: 24px;
+}
+
+.iconGarbage {
+    width: 24px;
+    height: 24px;
+    margin-left: 16px;
+    fill: var(--base-red);
+}
+
+.iconGarbage > * path {
+    fill: var(--base-red);
+}
+
+.lowerPart {
+    height: 404px;
+    background: linear-gradient(96.45deg, #707070 0%, #393939 100.28%);
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.teamLogo {
+    width: 502px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoImg {
+    height: 210px;
+    width: 210px;
+}
+
+.teamInfo {
+    margin-top: 65px;
+}
+
+.teamName {
+    font-family: Avenir-Black, sans-serif;
+    font-size: 36px;
+    line-height: 49px;
+    color: var(--base-white);
+    margin: 0;
+}
+
+.label {
+    font-family: Avenir-Black, sans-serif;
+    font-size: 24px;
+    line-height: 33px;
+    color: var(--base-white);
+    margin: 40px 0 8px 0;
+}
+
+.firstLine {
+    display: flex;
+    flex-direction: row;
+}
+
+.firstLine > div:first-child {
+    margin-right: 84px;
+}
+
+.teamData {
+    font-family: Avenir-Medium, sans-serif;
+    font-size: 18px;
+    line-height: 25px;
+    color: var(--base-white);
+    margin: 0;
+}

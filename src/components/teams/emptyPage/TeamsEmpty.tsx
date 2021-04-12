@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ReactComponent as NoTeams} from "../svgs/illustration.svg";
+import {ReactComponent as NoTeams} from "../../svgs/illustration.svg";
 import styles from "./stylesTeamEmpty.module.css";
 
 export function TeamsEmpty(): React.ReactElement {

@@ -1,16 +1,14 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import type {RootState} from "./Store";
-import {SendCard, SendPhoto, IAddTeam} from "./types";
+import {SendCard, SendPhoto, ITeamDetails, TeamDetails} from "./types";
 
-const initialState: IAddTeam = {
-    data: {
-        name: '',
-        foundationYear: 0,
-        division: '',
-        conference: '',
-        imageUrl: '',
-        id: 0
-    },
+const initialState: ITeamDetails = {
+    name: '',
+    foundationYear: 0,
+    division: '',
+    conference: '',
+    imageUrl: '',
+    id: 0,
     isFetching: false,
     isSuccess: false,
     isError: false,
@@ -18,7 +16,7 @@ const initialState: IAddTeam = {
 }
 
 export const uploadPhotoTeam = createAsyncThunk(
-    'addteam/uploadPhotoTeam',
+    'teamDetails/uploadPhotoTeam',
     async ({uploadingImage, collectedData, token}: SendPhoto, thunkAPI) => {
         if (!uploadingImage)
             return;
@@ -51,7 +49,7 @@ export const uploadPhotoTeam = createAsyncThunk(
     }
 )
 export const uploadTeamCard = createAsyncThunk(
-    'addteam/uploadTeamCard',
+    'teamDetails/uploadTeamCard',
     async ({collectedData, token}: SendCard, thunkAPI) => {
         try {
             const response = await fetch(
@@ -79,8 +77,35 @@ export const uploadTeamCard = createAsyncThunk(
     }
 )
 
-export const teamsSlice = createSlice({
-    name: 'addteam',
+export const fetchTeamDetails = createAsyncThunk(
+    'teamDetails/fetchTeamDetails',
+    async ({id, token}: TeamDetails, thunkAPI) => {
+        try {
+            const response = await fetch(
+                `http://dev.trainee.dex-it.ru/api/Team/Get?id=${id}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        Authorization: 'Bearer ' + token
+                    }
+                }
+            );
+            let data = await response.json();
+
+            if (response.status === 200) {
+                return {...data};
+            } else {
+                return thunkAPI.rejectWithValue(data);
+            }
+        } catch (e) {
+            console.log('Error', e.response.data);
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+)
+
+export const teamDetailsSlice = createSlice({
+    name: 'teamDetails',
     initialState,
     reducers: {
         clearState: (state) => {
@@ -107,6 +132,12 @@ export const teamsSlice = createSlice({
         builder.addCase(uploadTeamCard.fulfilled, (state, {payload}) => {
             state.isFetching = false;
             state.isSuccess = true;
+            state.name = payload.name;
+            state.foundationYear = payload.foundationYear;
+            state.division = payload.division;
+            state.conference = payload.conference;
+            state.imageUrl = payload.imageUrl;
+            state.id = payload.id;
         })
         builder.addCase((uploadTeamCard.pending), (state) => {
             state.isFetching = true;
@@ -116,8 +147,27 @@ export const teamsSlice = createSlice({
             state.isError = true;
             state.errorMessage = action.error.message;
         })
+
+        builder.addCase(fetchTeamDetails.fulfilled, (state, {payload}) => {
+            state.isFetching = false;
+            state.isSuccess = true;
+            state.name = payload.name;
+            state.foundationYear = payload.foundationYear;
+            state.division = payload.division;
+            state.conference = payload.conference;
+            state.imageUrl = payload.imageUrl;
+            state.id = payload.id;
+        })
+        builder.addCase((fetchTeamDetails.pending), (state) => {
+            state.isFetching = true;
+        })
+        builder.addCase((fetchTeamDetails.rejected), (state, action) => {
+            state.isFetching = false;
+            state.isError = true;
+            state.errorMessage = action.error.message;
+        })
     }
 })
 
-export const addTeamSelector = (state: RootState) => state.teams;
-export const {clearState} = teamsSlice.actions;
+export const teamDetailsSelector = (state: RootState) => state.teamDetails;
+export const {clearState} = teamDetailsSlice.actions;

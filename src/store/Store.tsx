@@ -1,6 +1,7 @@
 import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import {userSlice} from "./userSlice";
 import {teamsSlice} from "./teamsSlice";
+import {teamDetailsSlice} from "./teamDetailsSlice";
 
 const middleware = getDefaultMiddleware({
     immutableCheck: false,
@@ -12,6 +13,7 @@ export const store = configureStore({
     reducer: {
         user: userSlice.reducer,
         teams: teamsSlice.reducer,
+        teamDetails: teamDetailsSlice.reducer,
     },
     middleware,
     devTools: process.env.NODE_ENV !== 'production'

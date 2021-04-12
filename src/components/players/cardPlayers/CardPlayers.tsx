@@ -1,12 +1,12 @@
 import * as React from "react";
 import {useState} from "react";
-import {Search} from "../UIElements/Search";
-import {ButtonAdd} from "../UIElements/ButtonAdd";
-import {SmallCard} from "../UIComponents/smallCard/SmallCard";
+import {Search} from "../../UIElements/Search";
+import {ButtonAdd} from "../../UIElements/ButtonAdd";
+import {SmallCard} from "../../UIComponents/smallCard/SmallCard";
 import styles from "./stylesCardPlayers.module.css";
-import {teamCardsArray} from "../teamCardsArray";
-import {Pagination} from "../UIComponents/pagination/Pagination";
-import {NumberOfItemsOnPage} from "../UIComponents/pagination/NumberOfItemsOnPage";
+import {teamCardsArray} from "../../teamCardsArray";
+import {Pagination} from "../../UIComponents/pagination/Pagination";
+import {NumberOfItemsOnPage} from "../../UIComponents/pagination/NumberOfItemsOnPage";
 
 export function CardsPlayer(): React.ReactElement {
     let [currentPage, setCurrentPage] = useState<number>(0);
@@ -22,7 +22,8 @@ export function CardsPlayer(): React.ReactElement {
     let pageCount = Math.ceil(teamCardsArray.length / itemsOnPage);
 
     const currentPageData = teamCardsArray.slice(offset, offset + itemsOnPage).map((item) => (
-        <SmallCard cardType="playerCard" name={item.itemName} foundationYear={item.foundationYear} imageUrl={item.itemName} number="#10"
+        <SmallCard cardType="playerCard" name={item.itemName} foundationYear={item.foundationYear} imageUrl={item.itemName}
+                   number="#10" linkTo={`/main/players/PlayerDetails/${item.itemName}`} onClick={() => (console.log("player"))}
                    key={item.itemName}/>)
     )
 

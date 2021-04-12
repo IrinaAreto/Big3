@@ -22,12 +22,10 @@ export function Sidebar(): React.ReactElement {
     return (
         <div className={styles.sidebar}>
             <ul className={styles.sidebarMenu}>
-                <li><NavLink to={`${url}/teams`} activeClassName={styles.activeLink}
-                             className={styles.menuItem}><GroupPerson
-                    className={styles.menuIcon}/>Teams</NavLink></li>
-                <li><NavLink to={`${url}/players`} activeClassName={styles.activeLink}
-                             className={styles.menuItem}><Person
-                    className={styles.menuIcon}/>Players</NavLink></li>
+                <li><NavLink to={`${url}/teams`} activeClassName={styles.activeLink} className={styles.menuItem}>
+                    <GroupPerson className={styles.menuIcon}/>Teams</NavLink></li>
+                <li><NavLink to={`${url}/players`} activeClassName={styles.activeLink} className={styles.menuItem}>
+                    <Person className={styles.menuIcon}/>Players</NavLink></li>
             </ul>
             <div className={styles.signout} onClick={onSignOut}><SignOut
                 className={styles.signoutIcon}/><p

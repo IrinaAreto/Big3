@@ -47,19 +47,20 @@ export interface ITeams {
     errorMessage: string | undefined
 }
 
-type teamData = {
+export interface ITeamDetails {
     name: string,
     foundationYear: 0,
     division: string,
     conference: string,
     imageUrl: string,
     id: 0
-}
-
-export interface IAddTeam {
-    data: teamData,
     isFetching: boolean,
     isSuccess: boolean,
     isError: boolean,
     errorMessage: string | undefined
+}
+
+export type TeamDetails = {
+    id: number;
+    token: string | null;
 }

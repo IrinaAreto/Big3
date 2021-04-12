@@ -15,6 +15,7 @@
 
 .button:hover {
     background: var(--base-light-red);
+    cursor: pointer;
 }
 
 .button:active {
@@ -67,6 +68,7 @@
 
 .add:hover {
     background: var(--base-light-red);
+    cursor: pointer;
 }
 
 .add:active {
@@ -106,6 +108,7 @@
 
 .secondaryButton:hover {
     background: var(--base-lightest-grey);
+    cursor: pointer;
 }
 
 .secondaryButton:active {

@@ -1,12 +1,12 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Input} from "../../UIElements/Input";
 import {SecondaryButton} from "../../UIElements/SecondaryButton";
 import {ButtonSubmit} from "../../UIElements/ButtonSubmit";
 import {useAppDispatch, useAppSelector} from "../../../store/Hooks";
-import {uploadPhotoTeam, clearState} from "../../../store/addTeamSlice";
+import {uploadPhotoTeam, clearState} from "../../../store/teamDetailsSlice";
 import {userSelector} from "../../../store/userSlice";
 import {ReactComponent as AddPhoto} from "../../svgs/add_a_photo_24px_rounded.svg";
 import styles from "./stylesAddTeam.module.css";
@@ -41,12 +41,13 @@ export function AddTeam(): React.ReactElement {
     const dispatch = useAppDispatch();
     const {token} = useAppSelector(userSelector);
     const history = useHistory();
+    let dataId = useParams();
     const onSubmit: SubmitHandler<InputsAdd> = data => {
         dispatch(uploadPhotoTeam({
             uploadingImage: uploadingFile,
             collectedData: data,
             token: token
-        })).then(() => history.push('/main/teams'));
+        })).then(() => history.push(`/main/teams/teamDetails/${dataId}`));
     }
 
     return (
