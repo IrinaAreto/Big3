@@ -22,15 +22,18 @@ export function CardsPlayer(): React.ReactElement {
     let pageCount = Math.ceil(teamCardsArray.length / itemsOnPage);
 
     const currentPageData = teamCardsArray.slice(offset, offset + itemsOnPage).map((item) => (
-        <SmallCard cardType="playerCard" name={item.itemName} foundationYear={item.foundationYear} imageUrl={item.itemName}
-                   number="#10" linkTo={`/main/players/PlayerDetails/${item.itemName}`} onClick={() => (console.log("player"))}
+        <SmallCard playerCard={true} name={item.itemName} foundationYear={item.foundationYear} imageUrl={item.itemName}
+                   number="#10" linkTo={`/main/players/PlayerDetails/${item.itemName}`}
+                   onClick={() => (console.log("player"))}
                    key={item.itemName}/>)
     )
 
     return (
         <>
             <div className={styles.searchAdd}>
-                <div><Search/><div></div></div>
+                <div><Search/>
+                    <div></div>
+                </div>
                 <ButtonAdd buttonName="Add" linkTo='/main/players/addPlayer'/>
             </div>
             <div className={styles.cardsContainer}>

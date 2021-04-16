@@ -31,7 +31,7 @@ export function CardsTeams(): React.ReactElement {
     let pageCount = Math.ceil(teams.count / itemsOnPage);
 
     const currentPageData = teams.data.map((item) => (
-        <SmallCard cardType="teamCard" name={item.name} foundationYear={item.foundationYear} imageUrl={item.imageUrl}
+        <SmallCard playerCard={false} name={item.name} foundationYear={item.foundationYear} imageUrl={item.imageUrl}
                    linkTo={`/main/teams/teamDetails/${item.id}`}
                    onClick={() => dispatch(fetchTeamDetails({id: item.id, token: localStorage.getItem('token')}))}
                    key={item.id}/>)

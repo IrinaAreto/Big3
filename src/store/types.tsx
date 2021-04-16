@@ -1,4 +1,4 @@
-import {InputsAdd} from "../components/teams/addNew/AddTeam";
+import {InputsAdd} from "../components/teams/AddEdit/addNew/AddTeam";
 
 export interface ISignIn {
     username: string,
@@ -18,7 +18,6 @@ export type PagesFetch = {
 
 export type SendPhoto = {
     uploadingImage: File | undefined;
-    collectedData: InputsAdd;
     token: string | null;
 }
 
@@ -62,5 +61,10 @@ export interface ITeamDetails {
 
 export type TeamDetails = {
     id: number;
+    token: string | null;
+}
+
+export type PhotoDetails = {
+    imageURL: string;
     token: string | null;
 }

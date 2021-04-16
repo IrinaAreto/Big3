@@ -1,20 +1,42 @@
 import * as React from "react";
-import {useAppSelector} from "../../../../store/Hooks";
-import {teamDetailsSelector} from "../../../../store/teamDetailsSlice";
+import {useHistory} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../../../store/Hooks";
+import {deletePhotoTeam, teamDetailsSelector} from "../../../../store/teamDetailsSlice";
+import {deleteTeamDetails} from "../../../../store/teamDetailsSlice";
 import {ReactComponent as Pencil} from "../../../svgs/create_rounded.svg";
 import {ReactComponent as Garbage} from "../../../svgs/delete_rounded.svg";
 import styles from "./styles.module.css";
 
 export function TeamCardDetails(): React.ReactElement {
     const teamDetails = useAppSelector(teamDetailsSelector);
+    const dispatch = useAppDispatch();
+    const history = useHistory();
+
+    const editTeam = () => {
+        history.push('/main/teams/editTeam');
+    }
+
+    let url = teamDetails.imageUrl.replace('http://dev.trainee.dex-it.ru/', '/');
+
+    const deleteTeam = () => {
+        dispatch(deleteTeamDetails({
+            id: teamDetails.id,
+            token: localStorage.getItem('token')
+        })).then(() => {
+            dispatch(deletePhotoTeam({
+                imageURL: url,
+                token: localStorage.getItem('token')
+            }))
+        }).then(() => history.push('/main/teams'));
+    }
 
     return (
         <div className={styles.cardContainer}>
             <div className={styles.upperPart}>
                 <p className={styles.namePath}>Teams / {teamDetails.name}</p>
                 <div className={styles.addDelete}>
-                    <Pencil className={styles.iconPencil}/>
-                    <Garbage className={styles.iconGarbage}/>
+                    <Pencil onClick={editTeam} className={styles.iconPencil}/>
+                    <Garbage onClick={deleteTeam} className={styles.iconGarbage}/>
                 </div>
             </div>
             <div className={styles.lowerPart}>

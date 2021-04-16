@@ -29,6 +29,7 @@
 .iconPencil {
     width: 24px;
     height: 24px;
+    cursor: pointer;
 }
 
 .iconGarbage {
@@ -36,6 +37,7 @@
     height: 24px;
     margin-left: 16px;
     fill: var(--base-red);
+    cursor: pointer;
 }
 
 .iconGarbage > * path {
