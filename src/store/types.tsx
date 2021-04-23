@@ -16,6 +16,11 @@ export type PagesFetch = {
     token: string | null;
 }
 
+export type SearchedItem = {
+    name: string;
+    token: string | null;
+}
+
 export type SendPhoto = {
     uploadingImage: File | undefined;
     token: string | null;

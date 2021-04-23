@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import type {RootState} from "./Store";
-import {PagesFetch, ITeams} from "./types";
+import {PagesFetch, SearchedItem, ITeams} from "./types";
 
 const initialState: ITeams = {
     data: [],
@@ -41,6 +41,35 @@ export const fetchTeamsCards = createAsyncThunk(
     }
 )
 
+export const fetchSearchedTeam = createAsyncThunk(
+    'teams/fetchSearchedTeam',
+    async ({ name, token}: SearchedItem, thunkAPI) => {
+        try {
+            const response = await fetch(
+                `http://dev.trainee.dex-it.ru/api/Team/GetTeams?Name=${name}`,
+                {
+                    method: 'GET',
+                    headers: {
+                        Authorization: 'Bearer ' + token,
+                    }
+                }
+            );
+            let data = await response.json();
+
+            if (response.status === 200) {
+                return {...data};
+            } else {
+                console.log('data', data);
+                return thunkAPI.rejectWithValue(data);
+            }
+        } catch (e) {
+            console.log('Error', e.response.data);
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+)
+
+
 export const teamsSlice = createSlice({
     name: 'teams',
     initialState,
@@ -65,6 +94,23 @@ export const teamsSlice = createSlice({
             state.isFetching = true;
         })
         builder.addCase(fetchTeamsCards.rejected, (state, action) => {
+            state.isFetching = false;
+            state.isError = true;
+            state.errorMessage = action.error.message;
+        })
+
+        builder.addCase(fetchSearchedTeam.fulfilled, (state, {payload}) => {
+            state.isFetching = false;
+            state.isSuccess = true;
+            state.data = payload.data;
+            state.count = payload.count;
+            state.page = payload.page;
+            state.size = payload.size;
+        })
+        builder.addCase(fetchSearchedTeam.pending, (state, action) => {
+            state.isFetching = true;
+        })
+        builder.addCase(fetchSearchedTeam.rejected, (state, action) => {
             state.isFetching = false;
             state.isError = true;
             state.errorMessage = action.error.message;

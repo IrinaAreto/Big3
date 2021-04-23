@@ -14,13 +14,13 @@ interface SmallCardProps {
 }
 
 export function SmallCard({playerCard, name, foundationYear, imageUrl, number, linkTo, onClick}: SmallCardProps): React.ReactElement {
-    let photoPosition: string = classNames(styles.upperPart, playerCard ? styles.upperPartPlayer : "");
+    let photoPosition: string = classNames(styles.upperPart, playerCard ? styles.upperPartPlayer : '');
     let numberStyle: string = classNames(styles.playerNumber, styles.name);
 
     return (
         <div className={styles.smallCard}>
             <NavLink to={linkTo} className={styles.linkStyle} onClick={onClick}>
-                <div className={photoPosition}><img src={imageUrl} alt="team logo"/></div>
+                <div className={photoPosition}><img src={imageUrl} alt='team logo'/></div>
                 <div className={styles.lowerPart}>
                     <div>{playerCard ?
                         <div className={styles.nameNumber}><p className={styles.name}>{name}</p><p
