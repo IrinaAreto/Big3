@@ -15,12 +15,12 @@ export function Search(): React.ReactElement {
 
     useEffect(() => {
         const delayFn = setTimeout(() => {
-            console.log('value: ', searchedValue);
-            let value = '';
             if (searchedValue) {
-                value = searchedValue[0].toUpperCase() + searchedValue.slice(1);
+                dispatch(fetchSearchedTeam({
+                    name: searchedValue[0].toUpperCase() + searchedValue.slice(1),
+                    token: localStorage.getItem('token')
+                }));
             }
-            dispatch(fetchSearchedTeam({name: value, token: localStorage.getItem('token')}));
         }, 3000)
         return () => clearTimeout(delayFn);
     }, [searchedValue])

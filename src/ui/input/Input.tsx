@@ -3,14 +3,21 @@ import {useState} from 'react';
 import {ReactComponent as OpenedEye} from '../../assets/svgs/eye_rounded.svg';
 import {ReactComponent as ClosedEye} from '../../assets/svgs/close_eye_rounded.svg';
 import styles from './stylesInput.module.css';
+import classNames from 'classnames';
 
 interface IInputProps {
     name: string,
     inputLineName: string;
     inputType: string;
+    err?: boolean;
 }
 
-export const Input = React.forwardRef(({name, inputLineName, inputType}: IInputProps, ref: any): React.ReactElement => {
+export const Input = React.forwardRef(({
+                                           name,
+                                           inputLineName,
+                                           inputType,
+                                           err
+                                       }: IInputProps, ref: any): React.ReactElement => {
     let [showingPassword, setShowingPassword] = useState<boolean>(false);
     const showPassword = () => {
         setShowingPassword(!showingPassword);
@@ -23,7 +30,7 @@ export const Input = React.forwardRef(({name, inputLineName, inputType}: IInputP
     }
 
     return (
-        <div className={styles.input}>
+        <div className={classNames(styles.input, err ? styles.errHeight : '')}>
             <div className={styles.inputName}>
                 <div>{inputLineName}</div>
             </div>
@@ -36,6 +43,7 @@ export const Input = React.forwardRef(({name, inputLineName, inputType}: IInputP
                     null
             }
             <input name={name} ref={ref} className={styles.inputLine} type={setInputType()}/>
+            {err ? <div className={styles.errorMessage}>Wrong password. Please, try again.</div> : ''}
         </div>
     )
 })

@@ -19,7 +19,7 @@ export type InputsLogin = {
 export function LoginPage(): React.ReactElement {
     const {register, handleSubmit} = useForm<InputsLogin>();
     const dispatch = useAppDispatch();
-    const {token, isSuccess, isError, errorMessage} = useAppSelector(userSelector);
+    const {token, isSuccess, isError} = useAppSelector(userSelector);
 
     const onSubmit: SubmitHandler<InputsLogin> = async data => {
         await dispatch(loginUser(data))
@@ -35,12 +35,7 @@ export function LoginPage(): React.ReactElement {
         if (isSuccess) {
             dispatch(clearState());
         }
-
-        if (isError) {
-            console.log('err: ', errorMessage);
-            dispatch(clearState());
-        }
-    }, [isSuccess, isError]);
+    }, [isSuccess]);
 
     return (
         !!token ? <Redirect to='main/teams'/> :
@@ -49,7 +44,7 @@ export function LoginPage(): React.ReactElement {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className={styles.signinWords}>Sign In</div>
                         <Input name='login' ref={register} inputLineName='Login' inputType='inputTxt'/>
-                        <Input name='password' ref={register} inputLineName='Password' inputType='pswd'/>
+                        <Input name='password' ref={register} inputLineName='Password' inputType='pswd' err={isError}/>
                         <ButtonSubmit buttonName='Sign In' buttonSize='long'/>
                         <div className={styles.moveToSignUp}>
                             <p>Not a member yet? <NavLink to='/signup' className={styles.moveToSignUpLink}>Sign
@@ -59,6 +54,13 @@ export function LoginPage(): React.ReactElement {
                     </form>
                 </div>
                 <div className={styles.pictureSide}>
+                    {isError ?
+                        <div className={styles.notification}>
+                            <div className={styles.notificationText}>User with the specified username / password was not
+                                found.
+                            </div>
+                        </div>
+                        : ''}
                     <Group className={styles.picture}/>
                 </div>
             </div>

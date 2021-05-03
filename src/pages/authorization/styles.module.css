@@ -55,3 +55,21 @@
     width: 605px;
     height: 412px;
 }
+
+.notification {
+    position: absolute;
+    top: 36px;
+    right: 36px;
+    width: 470px;
+    height: 40px;
+    background-color: var(--base-light-red);
+    border-radius: 4px;
+}
+
+.notificationText {
+    font-family: Avenir, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--base-white);
+    margin: 8px 16px;
+}
