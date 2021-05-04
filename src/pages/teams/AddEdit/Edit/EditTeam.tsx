@@ -5,10 +5,11 @@ import {SubmitHandler} from 'react-hook-form';
 import {useAppDispatch, useAppSelector} from '../../../../core/hooks/Hooks';
 import {uploadPhotoTeam} from '../../../../modules/teamDetails/UploadPhotoTeamThunk';
 import {editTeamCard} from '../../../../modules/teamDetails/EditTeamCardThunk';
-import {clearState} from '../../../../modules/teamDetails/teamDetailsSlice';
+import {clearState} from '../../../../modules/teamDetails/TeamDetailsSlice';
 import {teamDetailsSelector} from '../../../../modules/teamDetails/TeamDetailsSelector';
 import {userSelector} from '../../../../modules/user/UserSelector';
 import {AddEditTeamInputs} from '../AddEditTeamInputs';
+import {baseURL} from '../../../../api/BaseUrl';
 import styles from '../stylesAddEditTeam.module.css';
 
 export type InputsEdit = {
@@ -57,7 +58,7 @@ export function EditTeam(): React.ReactElement {
                 uploadingImage: newUploadingFile,
                 token: token
             })).then((receivedData) => {
-                data.imageUrl = 'http://dev.trainee.dex-it.ru' + receivedData.payload;
+                data.imageUrl = baseURL + receivedData.payload;
                 dispatch(editTeamCard({
                     collectedData: data,
                     token: token

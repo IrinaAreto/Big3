@@ -7,7 +7,7 @@ export const editTeamCard = createAsyncThunk(
     async ({collectedData, token}: SendCard, thunkAPI) => {
         try {
             const response = await fetch(
-                `${baseURL}/Team/Update`,
+                `${baseURL}/api/Team/Update`,
                 {
                     method: 'PUT',
                     headers: {

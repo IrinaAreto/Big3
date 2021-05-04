@@ -12,7 +12,7 @@ export const uploadPhotoTeam = createAsyncThunk(
         formData.append('file', uploadingImage, uploadingImage.name);
         try {
             const response = await fetch(
-                `${baseURL}/Image/SaveImage`,
+                `${baseURL}/api/Image/SaveImage`,
                 {
                     method: 'POST',
                     headers: {

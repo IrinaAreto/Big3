@@ -7,7 +7,7 @@ export const fetchSearchedTeam = createAsyncThunk(
     async ({name, token}: SearchedItem, thunkAPI) => {
         try {
             const response = await fetch(
-                `${baseURL}/Team/GetTeams?Name=${name}`,
+                `${baseURL}/api/Team/GetTeams?Name=${name}`,
                 {
                     method: 'GET',
                     headers: {

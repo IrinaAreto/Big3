@@ -7,7 +7,7 @@ export const signupUser = createAsyncThunk(
     async (signUpData: SignUpType, thunkAPI) => {
         try {
             const response = await fetch(
-                `${baseURL}/Auth/SignUp`,
+                `${baseURL}/api/Auth/SignUp`,
                 {
                     method: 'POST',
                     headers: {

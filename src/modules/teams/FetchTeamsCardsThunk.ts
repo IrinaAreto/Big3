@@ -7,7 +7,7 @@ export const fetchTeamsCards = createAsyncThunk(
     async ({page, pageSize, token}: PagesFetch, thunkAPI) => {
         try {
             const response = await fetch(
-                `${baseURL}/Team/GetTeams?Name=%20&Page=${page}&PageSize=${pageSize}`,
+                `${baseURL}/api/Team/GetTeams?Name=%20&Page=${page}&PageSize=${pageSize}`,
                 {
                     method: 'GET',
                     headers: {

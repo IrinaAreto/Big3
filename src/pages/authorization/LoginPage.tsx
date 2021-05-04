@@ -3,7 +3,7 @@ import {useEffect} from 'react';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import {NavLink, Redirect} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../core/hooks/Hooks';
-import {clearState} from '../../modules/user/userSlice';
+import {clearState} from '../../modules/user/UserSlice';
 import {userSelector} from '../../modules/user/UserSelector';
 import {Input} from '../../ui/input/Input';
 import {ButtonSubmit} from '../../ui/buttons/ButtonSubmit';

@@ -7,7 +7,7 @@ export const deletePhotoTeam = createAsyncThunk(
     async ({imageURL, token}: PhotoDetails, thunkAPI) => {
         try {
             const response = await fetch(
-                `${baseURL}/Image/DeleteImage?fileName=${imageURL}`,
+                `${baseURL}/api/Image/DeleteImage?fileName=${imageURL}`,
                 {
                     method: 'DELETE',
                     headers: {

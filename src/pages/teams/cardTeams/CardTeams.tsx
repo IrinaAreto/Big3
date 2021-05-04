@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 import {Pagination} from '../../../ui/pagination/Pagination';
 import {Search} from '../../../ui/search/Search';
 import {ButtonAdd} from '../../../ui/buttons/ButtonAdd';
-import {SmallCard} from '../../../ui/smallCard/SmallCard';
+import {TeamSmallCard} from './component/TeamSmallCard';
 import {NumberOfItemsOnPage} from '../../../ui/pagination/NumberOfItemsOnPage';
 import {TeamsEmpty} from '../emptyPage/TeamsEmpty';
 import {useAppSelector, useAppDispatch} from '../../../core/hooks/Hooks';
@@ -32,10 +32,10 @@ export function CardsTeams(): React.ReactElement {
     let pageCount = Math.ceil(teams.count / itemsOnPage);
 
     const currentPageData = teams.data.map((item) => (
-        <SmallCard playerCard={false} name={item.name} foundationYear={item.foundationYear} imageUrl={item.imageUrl}
-                   linkTo={`/main/teams/teamDetails/${item.id}`}
-                   onClick={() => dispatch(fetchTeamDetails({id: item.id, token: localStorage.getItem('token')}))}
-                   key={item.id}/>)
+        <TeamSmallCard name={item.name} foundationYear={item.foundationYear} imageUrl={item.imageUrl}
+                       linkTo={`/main/teams/teamDetails/${item.id}`}
+                       onClick={() => dispatch(fetchTeamDetails({id: item.id, token: localStorage.getItem('token')}))}
+                       key={item.id}/>)
     )
 
     return (

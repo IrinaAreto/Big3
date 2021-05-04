@@ -42,7 +42,7 @@ export function TeamCardDetails(): React.ReactElement {
             </div>
             <div className={styles.lowerPart}>
                 <div className={styles.teamLogo}>
-                    <img className={styles.logoImg} src={teamDetails.imageUrl}/>
+                    <img className={styles.logoImg} src={teamDetails.imageUrl} alt={`team ${teamDetails.name} logo`}/>
                 </div>
                 <div className={styles.teamInfo}>
                     <div><p className={styles.teamName}>{teamDetails.name}</p></div>

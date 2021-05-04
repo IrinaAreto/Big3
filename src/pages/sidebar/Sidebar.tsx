@@ -2,7 +2,7 @@ import * as React from 'react';
 import {NavLink} from 'react-router-dom';
 import {useRouteMatch} from 'react-router-dom';
 import {useAppDispatch} from '../../core/hooks/Hooks';
-import {signOut} from '../../modules/user/userSlice';
+import {signOut} from '../../modules/user/UserSlice';
 import {ReactComponent as GroupPerson} from '../../assets/svgs/group_person_rounded.svg';
 import {ReactComponent as Person} from '../../assets/svgs/person_rounded.svg';
 import {ReactComponent as SignOut} from '../../assets/svgs/input_rounded.svg';

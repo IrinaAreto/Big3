@@ -6,9 +6,10 @@ import {InputsAdd} from '../../../../core/redux/types/InputsAdd';
 import {useAppDispatch, useAppSelector} from '../../../../core/hooks/Hooks';
 import {uploadPhotoTeam} from '../../../../modules/teamDetails/UploadPhotoTeamThunk';
 import {uploadTeamCard} from '../../../../modules/teamDetails/UploadTeamCardThunk';
-import {clearState} from '../../../../modules/teamDetails/teamDetailsSlice';
+import {clearState} from '../../../../modules/teamDetails/TeamDetailsSlice';
 import {userSelector} from '../../../../modules/user/UserSelector';
 import {AddEditTeamInputs} from '../AddEditTeamInputs';
+import {baseURL} from '../../../../api/BaseUrl';
 import styles from '../stylesAddEditTeam.module.css';
 
 export function AddTeam(): React.ReactElement {
@@ -39,7 +40,7 @@ export function AddTeam(): React.ReactElement {
             uploadingImage: uploadingFile,
             token: token
         })).then((receivedData) => {
-            data.imageUrl = 'http://dev.trainee.dex-it.ru' + receivedData.payload;
+            data.imageUrl = baseURL + receivedData.payload;
             dispatch(uploadTeamCard({
                 collectedData: data,
                 token: token

@@ -1,20 +1,18 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {SendCard} from '../../core/redux/types/SendCard';
+import {PagesFetch} from '../../core/redux/types/PagesFetch';
 import {baseURL} from '../../api/BaseUrl';
 
-export const uploadTeamCard = createAsyncThunk(
-    'teamDetails/uploadTeamCard',
-    async ({collectedData, token}: SendCard, thunkAPI) => {
+export const fetchPlayersCards = createAsyncThunk(
+    'players/fetchPlayers',
+    async ({page, pageSize, token}: PagesFetch, thunkAPI) => {
         try {
             const response = await fetch(
-                `${baseURL}/api/Team/Add`,
+                `${baseURL}/api/Player/GetPlayers?Page=${page}&PageSize=${pageSize}`,
                 {
-                    method: 'POST',
+                    method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: 'Bearer ' + token
-                    },
-                    body: JSON.stringify(collectedData)
+                        Authorization: 'Bearer ' + token,
+                    }
                 }
             );
             let data = await response.json();
@@ -22,6 +20,7 @@ export const uploadTeamCard = createAsyncThunk(
             if (response.status === 200) {
                 return {...data};
             } else {
+                console.log('data', data);
                 return thunkAPI.rejectWithValue(data);
             }
         } catch (e) {

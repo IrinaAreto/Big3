@@ -7,7 +7,7 @@ export const deleteTeamDetails = createAsyncThunk(
     async ({id, token}: TeamDetails, thunkAPI) => {
         try {
             const response = await fetch(
-                `${baseURL}/Team/Delete?id=${id}`,
+                `${baseURL}/api/Team/Delete?id=${id}`,
                 {
                     method: 'DELETE',
                     headers: {

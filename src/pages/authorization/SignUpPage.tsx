@@ -10,7 +10,7 @@ import {ReactComponent as SignUpPic} from '../../assets/svgs/signup.svg';
 import {useAppSelector, useAppDispatch} from '../../core/hooks/Hooks';
 import {signupUser} from '../../modules/user/SignupUserThunk';
 import {userSelector} from '../../modules/user/UserSelector';
-import {clearState} from '../../modules/user/userSlice';
+import {clearState} from '../../modules/user/UserSlice';
 import styles from './styles.module.css';
 
 type InputsSignUp = {
