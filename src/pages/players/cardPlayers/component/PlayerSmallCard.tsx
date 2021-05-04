@@ -29,7 +29,7 @@ export function PlayerSmallCard({
                 <div className={styles.lowerPart}>
                     <div>
                         <div className={styles.nameNumber}><p className={styles.name}>{name}</p><p
-                            className={classNames(styles.playerNumber, styles.name)}>{number}</p></div>
+                            className={classNames(styles.playerNumber, styles.name)}>#{number}</p></div>
                         <p className={styles.details}>{team}</p></div>
                 </div>
             </NavLink>

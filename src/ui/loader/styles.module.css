@@ -1,0 +1,32 @@
+.loaderContainer {
+    position: absolute;
+    top: 312px;
+    left: -10px;
+    min-height: calc(100vh - 112px);
+    min-width: calc(100vw - 300px);
+    display: flex;
+    justify-content: center;
+    color: var(--base-white);
+    /*opacity: 0.7;*/
+    z-index: 1000;
+}
+
+.loadingCircle {
+    width: 50px;
+    height: 50px;
+    border: 10px solid var(--base-dark-red);
+    border-top: 10px solid var(--base-light-red);
+    border-bottom: 10px solid var(--base-lightest-red);
+    border-radius: 50%;
+    animation: rotate 2s linear infinite;
+    margin-left: 25px;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

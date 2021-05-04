@@ -10,6 +10,8 @@ import {fetchPlayersCards} from '../../../modules/players/FetchPlayersCardsThunk
 import {playersSelector} from '../../../modules/players/PlayersSelector';
 import {TeamsEmpty} from '../../teams/emptyPage/TeamsEmpty';
 import styles from './stylesCardPlayers.module.css';
+import {clearState} from '../../../modules/user/UserSlice';
+import {Loader} from '../../../ui/loader/Loader';
 
 export function CardsPlayer(): React.ReactElement {
     let [currentPage, setCurrentPage] = useState<number>(1);
@@ -22,11 +24,23 @@ export function CardsPlayer(): React.ReactElement {
     };
 
     const dispatch = useAppDispatch();
+    const players = useAppSelector(playersSelector);
+
     useEffect(() => {
         dispatch(fetchPlayersCards({page: currentPage, pageSize: itemsOnPage, token: localStorage.getItem('token')}))
     }, [currentPage, itemsOnPage])
 
-    const players = useAppSelector(playersSelector);
+    useEffect(() => {
+        return () => {
+            dispatch(clearState());
+        };
+    }, []);
+
+    useEffect(() => {
+        if (players.isSuccess) {
+            dispatch(clearState());
+        }
+    }, [players.isSuccess]);
 
     let pageCount = Math.ceil(players.count / itemsOnPage);
 
@@ -39,21 +53,25 @@ export function CardsPlayer(): React.ReactElement {
 
     return (
         <>
-            <div className={styles.searchAdd}>
-                <div><Search/>
-                    <div></div>
-                </div>
-                <ButtonAdd buttonName='Add' linkTo='/main/players/addPlayer'/>
-            </div>
-            {players.count > 0 ?
-                <div className={styles.cardsContainer}>
-                    {currentPageData}
-                </div> :
-                <TeamsEmpty/>}
-            <div className={styles.pagination}>
-                <Pagination pageCount={pageCount} handlePageClick={handlePageClick}/>
-                <NumberOfItemsOnPage selectNumberOfItems={selectNumberOfItems}/>
-            </div>
+            {players.isFetching ? <Loader/> :
+                <>
+                    <div className={styles.searchAdd}>
+                        <div><Search/>
+                            <div></div>
+                        </div>
+                        <ButtonAdd buttonName='Add' linkTo='/main/players/addPlayer'/>
+                    </div>
+                    {players.count > 0 ?
+                        <div className={styles.cardsContainer}>
+                            {currentPageData}
+                        </div> :
+                        <TeamsEmpty/>}
+                    <div className={styles.pagination}>
+                        <Pagination pageCount={pageCount} handlePageClick={handlePageClick}/>
+                        <NumberOfItemsOnPage selectNumberOfItems={selectNumberOfItems}/>
+                    </div>
+                </>
+            }
         </>
     )
 }
